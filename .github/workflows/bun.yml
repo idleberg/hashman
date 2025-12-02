@@ -1,0 +1,50 @@
+name: "Run tests on Bun"
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bun.yml"
+      - "src/**"
+      - "tests/**"
+      - "types/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  pull_request:
+    paths:
+      - ".github/workflows/bun.yml"
+      - "src/**"
+      - "tests/**"
+      - "types/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  workflow_dispatch:
+
+jobs:
+  default:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+
+      - uses: oven-sh/setup-bun@v2
+
+      - uses: actions/cache@v4
+        name: Set up Bun cache
+        with:
+          path: |
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile --strict-peer-dependencies
+
+      - name: Lint Source
+        run: bunx biome ci
+
+      - name: Build Source
+        run: bun run --if-present build
+
+      - name: Run Tests
+        run: bun run --if-present test

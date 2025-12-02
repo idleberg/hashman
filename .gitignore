@@ -1,0 +1,15 @@
+node_modules/
+bin/
+dist/
+lib/
+.eslintcache
+
+# Development
+
+# Test
+coverage/
+test-results/
+
+# Project specific
+app.js
+test.ts
