@@ -11,7 +11,7 @@ Here's a tool that I personally need a lot, it creates checksums of a file in a 
 ## Installation 💿
 
 ```shell
-npm install @idleberg/hashman
+npm install --global @idleberg/hashman
 ```
 
 ## Usage 🚀
