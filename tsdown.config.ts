@@ -7,9 +7,9 @@ export default defineConfig((options) => {
 		target: 'node20',
 		clean: isProduction,
 		dts: isProduction,
-		entry: 'src/index.ts',
+		entry: ['src/index.ts', 'src/worker.mjs'],
 		format: 'esm',
 		minify: isProduction,
-		platform: 'node',
+		outDir: 'bin',
 	};
 });
