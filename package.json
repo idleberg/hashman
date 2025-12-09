@@ -1,27 +1,23 @@
 {
-	"name": "node-package-template",
+	"name": "@idleberg/hashman",
 	"version": "0.0.0",
-	"private": true,
-	"description": "Just my personal package template",
+	"description": "Calculates multiple checksums at once",
 	"license": "MIT",
 	"author": "Jan T. Sott",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/idleberg/node-package-template.git"
+		"url": "git+https://github.com/idleberg/hashman.git"
 	},
 	"keywords": [],
 	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
-		}
-	},
 	"engines": {
 		"node": ">=20"
 	},
+	"bin": {
+		"hashman": "./bin/index.mjs"
+	},
 	"files": [
-		"dist/",
+		"bin/",
 		"LICENSE",
 		"README.md"
 	],
@@ -36,6 +32,16 @@
 		"publish:jsr": "deno publish",
 		"publish:npm": "np --any-branch",
 		"test": "vitest run"
+	},
+	"dependencies": {
+		"commander": "^14.0.2",
+		"get-stdin": "^9.0.0",
+		"hash-wasm": "^4.12.0",
+		"kleur": "^4.1.5",
+		"log-symbols": "^7.0.1",
+		"piscina": "^5.1.4",
+		"pretty-bytes": "^7.1.0",
+		"yocto-spinner": "^1.0.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^20.1.0",
