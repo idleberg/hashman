@@ -8,6 +8,11 @@ export default defineConfig((options) => {
 		clean: isProduction,
 		dts: isProduction,
 		entry: ['src/index.ts', 'src/worker.mjs'],
+		external: [
+			// ensure we always read the current version from the manifests
+			'../deno.json',
+			'../package.json',
+		],
 		format: 'esm',
 		minify: isProduction,
 		outDir: 'bin',
