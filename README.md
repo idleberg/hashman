@@ -19,7 +19,7 @@ npm install @idleberg/hashman
 ## Usage 🚀
 
 ```shell
-npx hashman Hashman\ Deejay\ -\ Sandopolis.zip
+npx hashman "Hashman Deejay - Sandopolis.zip"
 ```
 
 See `npx hashman --help` for all available options.
