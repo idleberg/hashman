@@ -30,7 +30,7 @@ async function main() {
 	const startTime = performance.now();
 
 	const spinner = yoctoSpinner({
-		text: `Calculating ${algorithms.length === 1 ? 'hash' : 'hashes'} for "${fileName}"`,
+		text: `Calculating ${algorithms.length === 1 ? 'checksum' : 'checksums'} for "${fileName}"`,
 	}).start();
 
 	const hashMap = await Promise.all(
