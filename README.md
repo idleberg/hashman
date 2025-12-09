@@ -10,8 +10,6 @@ Here's a tool that I personally need a lot, it creates checksums of a file in a 
 
 ## Installation 💿
 
-In GitHub, click on _"Use this template"_ to create a new repo from this template. Alternatively, you can use degit.
-
 ```shell
 npm install @idleberg/hashman
 ```
