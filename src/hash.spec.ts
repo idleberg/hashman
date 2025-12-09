@@ -56,35 +56,73 @@ describe('hash', () => {
 		const testData = 'test content';
 
 		it('should compute CRC32 hash', async () => {
-			const result = await hash.crc32.fn(testData);
+			const hasher = await hash.crc32.fn();
+
+			hasher.init();
+
+			hasher.update(testData);
+			const result = hasher.digest();
+
 			expect(result).toBeTruthy();
 			expect(typeof result).toBe('string');
 			expect(result).toHaveLength(8); // CRC32 produces 8 hex characters
 		});
 
 		it('should compute MD5 hash', async () => {
-			const result = await hash.md5.fn(testData);
+			const hasher = await hash.md5.fn();
+
+			hasher.init();
+			hasher.update(testData);
+
+			const result = hasher.digest();
+
 			expect(result).toBeTruthy();
 			expect(typeof result).toBe('string');
 			expect(result).toHaveLength(32); // MD5 produces 32 hex characters
 		});
 
 		it('should compute SHA256 hash', async () => {
-			const result = await hash.sha256.fn(testData);
+			const hasher = await hash.sha256.fn();
+
+			hasher.init();
+			hasher.update(testData);
+
+			const result = hasher.digest();
+
 			expect(result).toBeTruthy();
 			expect(typeof result).toBe('string');
 			expect(result).toHaveLength(64); // SHA256 produces 64 hex characters
 		});
 
 		it('should produce consistent results for same input', async () => {
-			const result1 = await hash.sha256.fn(testData);
-			const result2 = await hash.sha256.fn(testData);
+			const hasher1 = await hash.sha256.fn();
+			hasher1.init();
+			hasher1.update(testData);
+			const result1 = hasher1.digest();
+
+			const hasher2 = await hash.sha256.fn();
+			hasher2.init();
+			hasher2.update(testData);
+			const result2 = hasher2.digest();
+
 			expect(result1).toBe(result2);
 		});
 
 		it('should produce different results for different inputs', async () => {
-			const result1 = await hash.sha256.fn(testData);
-			const result2 = await hash.sha256.fn('different content');
+			const hasher1 = await hash.sha256.fn();
+
+			hasher1.init();
+			hasher1.update(testData);
+
+			const result1 = hasher1.digest();
+
+			const hasher2 = await hash.sha256.fn();
+
+			hasher2.init();
+			hasher2.update('different content');
+
+			const result2 = hasher2.digest();
+
 			expect(result1).not.toBe(result2);
 		});
 	});
