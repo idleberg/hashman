@@ -10,7 +10,7 @@ export default defineConfig((options) => {
 		define: {
 			'import.meta.WORKER_URL': JSON.stringify('./worker.mjs'),
 		},
-		entry: ['src/index.ts', 'src/worker.mjs'],
+		entry: ['src/index.ts', 'src/worker.ts'],
 		external: [
 			// ensure we always read the current version from the manifests
 			'../deno.json',

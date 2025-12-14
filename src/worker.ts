@@ -1,14 +1,13 @@
-/** @import { HashingAlgorithm } from './hash.ts' */
 import { createReadStream } from 'node:fs';
-import { hash } from './hash.ts';
+import { type HashingAlgorithm, hash } from './hash.ts';
 
 /**
  * Hashes a file using the specified algorithm and measures the duration.
  * Uses streaming to support large files (2GB+) without loading the entire file into memory.
- * @param {{ fileName: string, algorithm: HashingAlgorithm }} params - The parameters object
+ * @param params - The parameters object
  * @returns {Promise<Object>} An object with the algorithm display name as key, containing hash and duration
  */
-export default async ({ fileName, algorithm }) => {
+export default async ({ fileName, algorithm }: { fileName: string; algorithm: HashingAlgorithm }) => {
 	const startTime = performance.now();
 
 	// Create hasher instance
