@@ -8,8 +8,10 @@ import { handleCli } from './cli.ts';
 import { type HashingAlgorithm, type HashObject, hash } from './hash.ts';
 import { logger } from './log.ts';
 
+const WORKER_URL = process.env.WORKER_URL || new URL('./worker.mjs', import.meta.url).href;
+
 const piscina = new Piscina({
-	filename: new URL('./worker.mjs', import.meta.url).href,
+	filename: WORKER_URL,
 });
 
 async function main() {
