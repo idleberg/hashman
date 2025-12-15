@@ -15,6 +15,10 @@ describe('hash', () => {
 				'sha256',
 				'sha384',
 				'sha512',
+				'sha3224',
+				'sha3256',
+				'sha3384',
+				'sha3512',
 			];
 
 			expect(Object.keys(hash)).toEqual(expectedAlgorithms);
@@ -42,6 +46,10 @@ describe('hash', () => {
 			sha256: 'SHA-256',
 			sha384: 'SHA-384',
 			sha512: 'SHA-512',
+			sha3224: 'SHA3-224',
+			sha3256: 'SHA3-256',
+			sha3384: 'SHA3-384',
+			sha3512: 'SHA3-512',
 		};
 
 		it.each(Object.entries(expectedDisplayNames))(

@@ -23,11 +23,15 @@ export async function handleCli() {
 		.option('--md4', 'create MD4 hash', false)
 		.option('--md5', 'create MD5 hash', false)
 		.option('--rmd160', 'create RIPEMD-160 hash', false)
-		.option('--sha1', 'create SHA-1 hash', false)
-		.option('--sha224', 'create SHA-224 hash', false)
-		.option('--sha256', 'create SHA-256 hash', false)
-		.option('--sha384', 'create SHA-384 hash', false)
-		.option('--sha512', 'create SHA-512 hash', false);
+		.option('--sha-1', 'create SHA-1 hash', false)
+		.option('--sha-224', 'create SHA-224 hash', false)
+		.option('--sha-256', 'create SHA-256 hash', false)
+		.option('--sha-384', 'create SHA-384 hash', false)
+		.option('--sha-512', 'create SHA-512 hash', false)
+		.option('--sha3-224', 'create SHA3-224 hash', false)
+		.option('--sha3-256', 'create SHA3-256 hash', false)
+		.option('--sha3-384', 'create SHA3-384 hash', false)
+		.option('--sha3-512', 'create SHA3-512 hash', false);
 
 	program.parse();
 
@@ -63,6 +67,10 @@ function mapOptions(options: OptionValues) {
 			sha256: true,
 			sha384: true,
 			sha512: true,
+			sha3224: true,
+			sha3256: true,
+			sha3384: true,
+			sha3512: true,
 
 			// Cleanup
 			all: undefined,

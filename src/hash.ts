@@ -5,13 +5,27 @@ import {
 	createMD5,
 	createRIPEMD160,
 	createSHA1,
+	createSHA3,
 	createSHA224,
 	createSHA256,
 	createSHA384,
 	createSHA512,
 } from 'hash-wasm';
 
-export type HashingAlgorithm = 'crc32' | 'md5' | 'ripemd160' | 'sha1' | 'sha224' | 'sha256' | 'sha384' | 'sha512';
+export type HashingAlgorithm =
+	| 'crc32'
+	| 'md5'
+	| 'ripemd160'
+	| 'sha1'
+	| 'sha224'
+	| 'sha256'
+	| 'sha384'
+	| 'sha512'
+	| 'sha3224'
+	| 'sha3256'
+	| 'sha3384'
+	| 'sha3512';
+
 export type HashObject = {
 	[K in HashingAlgorithm]: {
 		hash: string;
@@ -30,4 +44,8 @@ export const hash = {
 	sha256: { fn: createSHA256, display: 'SHA-256' },
 	sha384: { fn: createSHA384, display: 'SHA-384' },
 	sha512: { fn: createSHA512, display: 'SHA-512' },
+	sha3224: { fn: () => createSHA3(224), display: 'SHA3-224' },
+	sha3256: { fn: () => createSHA3(256), display: 'SHA3-256' },
+	sha3384: { fn: () => createSHA3(384), display: 'SHA3-384' },
+	sha3512: { fn: () => createSHA3(512), display: 'SHA3-512' },
 } as const;
