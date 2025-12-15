@@ -15,7 +15,7 @@ export async function handleCli() {
 			writeOut: (message: string) => logger.log(message),
 			writeErr: (message: string) => logger.error(message),
 		})
-		.argument('<file>', 'file to hash')
+		.argument('<file...>', 'file to hash')
 		.option('-A, --all', 'use all support hashes', false)
 		.optionsGroup('Hashing Algorithms:')
 		.option('--adler32', 'create Adler-32 hash', false)

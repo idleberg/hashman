@@ -16,7 +16,6 @@ const piscina = new Piscina({
 
 async function main() {
 	const { args, options } = await handleCli();
-	const fileName = args[0] as string;
 
 	const algorithms: HashingAlgorithm[] = [];
 
@@ -29,37 +28,44 @@ async function main() {
 	const displayNames = Object.values(hash).map((h) => h.display);
 	const maxLength = Math.max(...displayNames.map((a) => a.length));
 
-	const startTime = performance.now();
+	for (const fileName of args) {
+		const startTime = performance.now();
 
-	const spinner = yoctoSpinner({
-		text: `Calculating ${algorithms.length === 1 ? 'checksum' : 'checksums'} for "${fileName}"`,
-	}).start();
+		const spinner = yoctoSpinner({
+			text: `Calculating ${algorithms.length === 1 ? 'checksum' : 'checksums'} for "${fileName}"`,
+		}).start();
 
-	const hashMap = await Promise.all(
-		algorithms.map(async (algorithm) => {
-			return await piscina.run({ fileName, algorithm });
-		}),
-	);
+		const hashMap = await Promise.all(
+			algorithms.map(async (algorithm) => {
+				return await piscina.run({ fileName, algorithm });
+			}),
+		);
 
-	const results: HashObject = Object.assign({}, ...hashMap);
-	const { size } = await stat(fileName);
+		const results: HashObject = Object.assign({}, ...hashMap);
+		const { size } = await stat(fileName);
 
-	spinner.stop();
-	logger.log(/* let it breathe */);
-	logger.log(yellow(basename(fileName)));
-	logger.log('%s (%s bytes)', prettyBytes(size), size);
-	logger.debug(`Using ${piscina.threads.length} worker threads`);
-	logger.log(/* let it breathe */);
+		spinner.stop();
+		logger.log(/* let it breathe */);
+		logger.log(yellow(basename(fileName)));
+		logger.log('%s (%s bytes)', prettyBytes(size), size);
+		logger.debug(`Using ${piscina.threads.length} worker threads`);
+		logger.log(/* let it breathe */);
 
-	for (const [algorithm, { hash, duration }] of Object.entries(results)) {
-		const output = [`${algorithm.padEnd(maxLength)}`, blue(hash), grey(`${duration}ms`)];
-		logger.info(output.join(' '));
+		for (const [algorithm, { hash, duration }] of Object.entries(results)) {
+			const output = [`${algorithm.padEnd(maxLength)}`, blue(hash), grey(`${duration}ms`)];
+			logger.info(output.join(' '));
+		}
+
+		const endTime = performance.now();
+
+		logger.log(/** let it breathe */);
+		logger.success(`Completed in ${(endTime - startTime).toFixed(2)}ms`);
+
+		if (args.length > 1 && args.indexOf(fileName) < args.length - 1) {
+			logger.log(/** let it breathe */);
+			logger.log('─'.repeat(3));
+		}
 	}
-
-	const endTime = performance.now();
-
-	logger.log(/** let it breathe */);
-	logger.success(`Completed in ${(endTime - startTime).toFixed(2)}ms`);
 }
 
 await main();
