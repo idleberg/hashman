@@ -55,7 +55,7 @@
 		"@vitest/coverage-v8": "^4.0.15",
 		"concurrently": "^9.2.1",
 		"np": "^10.2.0",
-		"tsdown": "^0.17.4",
+		"tsdown": "^0.18.0",
 		"typescript": "^5.9.3",
 		"vitest": "^4.0.15"
 	},
