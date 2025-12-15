@@ -7,6 +7,7 @@ describe('hash', () => {
 			const expectedAlgorithms = [
 				'adler32',
 				'crc32',
+				'crc32c',
 				'crc64',
 				'md4',
 				'md5',
@@ -39,6 +40,7 @@ describe('hash', () => {
 		const expectedDisplayNames = {
 			adler32: 'Adler-32',
 			crc32: 'CRC32',
+			crc32c: 'CRC32C',
 			crc64: 'CRC64',
 			md4: 'MD4',
 			md5: 'MD5',

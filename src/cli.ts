@@ -20,6 +20,7 @@ export async function handleCli() {
 		.optionsGroup('Hashing Algorithms:')
 		.option('--adler32', 'create Adler-32 hash', false)
 		.option('--crc32', 'create CRC32 hash', false)
+		.option('--crc32c', 'create CRC32C hash', false)
 		.option('--crc64', 'create CRC64 hash', false)
 		.option('--md4', 'create MD4 hash', false)
 		.option('--md5', 'create MD5 hash', false)
@@ -60,6 +61,7 @@ function mapOptions(options: OptionValues) {
 		return {
 			adler32: true,
 			crc32: true,
+			crc32c: true,
 			crc64: true,
 			md4: true,
 			md5: true,
