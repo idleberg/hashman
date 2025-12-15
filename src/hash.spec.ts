@@ -56,12 +56,11 @@ describe('hash', () => {
 			sha3512: 'SHA3-512',
 		};
 
-		it.each(Object.entries(expectedDisplayNames))(
-			'should have correct display name for %s',
-			(algorithm, displayName) => {
-				expect(hash[algorithm as keyof typeof hash].display).toBe(displayName);
-			},
-		);
+		it.each(
+			Object.entries(expectedDisplayNames),
+		)('should have correct display name for %s', (algorithm, displayName) => {
+			expect(hash[algorithm as keyof typeof hash].display).toBe(displayName);
+		});
 	});
 
 	describe('hash functions', () => {
