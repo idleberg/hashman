@@ -1,6 +1,7 @@
 import {
 	createAdler32,
 	createCRC32,
+	createCRC64,
 	createMD4,
 	createMD5,
 	createRIPEMD160,
@@ -14,6 +15,7 @@ import {
 
 export type HashingAlgorithm =
 	| 'crc32'
+	| 'crc64'
 	| 'md5'
 	| 'ripemd160'
 	| 'sha1'
@@ -36,6 +38,7 @@ export type HashObject = {
 export const hash = {
 	adler32: { fn: createAdler32, display: 'Adler-32' },
 	crc32: { fn: createCRC32, display: 'CRC32' },
+	crc64: { fn: createCRC64, display: 'CRC64' },
 	md4: { fn: createMD4, display: 'MD4' },
 	md5: { fn: createMD5, display: 'MD5' },
 	ripemd160: { fn: createRIPEMD160, display: 'RIPEMD-160' },
