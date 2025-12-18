@@ -31,7 +31,7 @@
 		"lint": "concurrently --prefix-colors blue,magenta npm:lint:*",
 		"lint:biome": "biome check",
 		"lint:e18e": "e18e-cli analyze",
-		"prepack": "npm run lint && npm run build",
+		"prepack": "npm run build",
 		"prepare": "lefthook install",
 		"publish:jsr": "deno publish",
 		"publish:npm": "np --any-branch",
