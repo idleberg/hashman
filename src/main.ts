@@ -29,6 +29,8 @@ async function main() {
 	const maxLength = Math.max(...displayNames.map((a) => a.length));
 
 	for (const fileName of args) {
+		logger.log(/* let it breathe */);
+
 		const startTime = performance.now();
 
 		const spinner = yoctoSpinner({
@@ -45,7 +47,6 @@ async function main() {
 		const { size } = await stat(fileName);
 
 		spinner.stop();
-		logger.log(/* let it breathe */);
 		logger.log(yellow(basename(fileName)));
 		logger.log('%s (%s bytes)', prettyBytes(size), size);
 		logger.debug(`Using ${piscina.threads.length} worker threads`);
