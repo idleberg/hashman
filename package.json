@@ -51,12 +51,12 @@
 		"@commitlint/config-conventional": "^20.2.0",
 		"@idleberg/configs": "^0.4.1",
 		"@types/node": "^24.10.0",
-		"@vitest/coverage-v8": "^4.0.15",
+		"@vitest/coverage-v8": "^4.0.16",
 		"concurrently": "^9.2.1",
 		"np": "^10.2.0",
-		"tsdown": "^0.18.0",
+		"tsdown": "^0.18.1",
 		"typescript": "^5.9.3",
-		"vitest": "^4.0.15"
+		"vitest": "^4.0.16"
 	},
 	"packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501"
 }
