@@ -8,6 +8,8 @@
 
 Here's a tool that I personally use a lot. It concurrently calculates checksums of a file in a variety of formats. Supports Adler-32, CRC32, CRC32C, CRC64, MD4, MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, and SHA3-512.
 
+![Screenshot](resources/screenshot.png)
+
 The name is inspired by my favourite [Hashman Deejay](https://futuretimes.bandcamp.com/album/sandopolis) record.
 
 ## Installation 💿
