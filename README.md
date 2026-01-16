@@ -1,6 +1,6 @@
 # @idleberg/hashman
 
-> Calculates multiple checksums at once.
+> CLI to calculate multiple checksums at once.
 
 [![License](https://img.shields.io/github/license/idleberg/hashman?color=blue&style=for-the-badge)](https://github.com/idleberg/hashman/blob/main/LICENSE)
 [![Version: npm](https://img.shields.io/npm/v/@idleberg/hashman?style=for-the-badge)](https://www.npmjs.org/package/@idleberg/hashman)
