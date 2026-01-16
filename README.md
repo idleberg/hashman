@@ -1,6 +1,6 @@
 # @idleberg/hashman
 
-> Calculates multiple checksums at once.
+> CLI to calculate multiple checksums at once.
 
 [![License](https://img.shields.io/github/license/idleberg/hashman?color=blue&style=for-the-badge)](https://github.com/idleberg/hashman/blob/main/LICENSE)
 [![Version: npm](https://img.shields.io/npm/v/@idleberg/hashman?style=for-the-badge)](https://www.npmjs.org/package/@idleberg/hashman)
@@ -10,7 +10,7 @@ Here's a tool that I personally use a lot. It concurrently calculates checksums 
 
 ![Screenshot](resources/screenshot.png)
 
-The name is inspired by my favourite [Hashman Deejay](https://futuretimes.bandcamp.com/album/sandopolis) record.
+The name is inspired by [Hashman Deejay](https://futuretimes.bandcamp.com/album/sandopolis), whose music I love listening to while creating things.
 
 ## Installation 💿
 
