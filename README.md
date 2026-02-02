@@ -14,6 +14,10 @@ The name is inspired by [Hashman Deejay](https://futuretimes.bandcamp.com/album/
 
 ## Installation 💿
 
+> [!TIP]
+>
+> For single time use it's sufficient to run `npx @idleberg/hashman` rather than to install it.
+
 ```shell
 npm install --global @idleberg/hashman
 ```
