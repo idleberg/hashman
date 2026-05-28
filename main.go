@@ -4,14 +4,12 @@ import (
 	"fmt"
 	"os"
 	"runtime"
-	"time"
 
-	tea "charm.land/bubbletea/v2"
 	"github.com/mattn/go-isatty"
 	"github.com/spf13/cobra"
 
 	"github.com/idleberg/go-hashman/internal/algo"
-	"github.com/idleberg/go-hashman/internal/hasher"
+	"github.com/idleberg/go-hashman/internal/runner"
 	"github.com/idleberg/go-hashman/internal/ui"
 )
 
@@ -27,8 +25,8 @@ func main() {
 		Short:         "Calculate multiple hashes for files concurrently",
 		Args:          cobra.MinimumNArgs(1),
 		RunE:          run,
-		SilenceUsage:  true,
 		Version:       Version,
+		SilenceUsage:  true,
 		SilenceErrors: true,
 	}
 
@@ -58,42 +56,13 @@ func run(cmd *cobra.Command, args []string) error {
 		return cmd.Help()
 	}
 
-	maxDisplayLen := 0
-	for _, a := range selected {
-		if len(a.Display) > maxDisplayLen {
-			maxDisplayLen = len(a.Display)
-		}
+	cfg := runner.Config{
+		Algorithms: selected,
+		MaxWorkers: runtime.NumCPU(),
+		IsTTY:      isTerminal(),
 	}
 
-	maxWorkers := runtime.NumCPU()
-	isTTY := isTerminal()
-
-	for i, filePath := range args {
-		startTime := time.Now()
-
-		var results []hasher.Result
-
-		if isTTY {
-			model := ui.NewSpinnerModel(filePath, selected, maxWorkers)
-			p := tea.NewProgram(model)
-			finalModel, err := p.Run()
-			if err != nil {
-				return fmt.Errorf("error processing %s: %w", filePath, err)
-			}
-			results = finalModel.(ui.SpinnerModel).Results()
-		} else {
-			results = hasher.HashFile(filePath, selected, maxWorkers)
-		}
-
-		totalDuration := time.Since(startTime)
-		ui.PrintResults(filePath, results, totalDuration, maxDisplayLen)
-
-		if i < len(args)-1 {
-			ui.PrintSeparator()
-		}
-	}
-
-	return nil
+	return runner.Run(cfg, args)
 }
 
 func resolveAlgorithms() []algo.Algorithm {
