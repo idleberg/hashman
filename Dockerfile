@@ -8,10 +8,11 @@ ARG VERSION=dev
 
 WORKDIR /app
 
-COPY internal go.mod go.sum main.go ./
+COPY go.mod go.sum main.go ./
+COPY internal/ internal/
 
 RUN go mod download
-RUN GOOS=$TARGETOS GOARCH=$TARGETARCH go build -ldflags="-s -w -X main.Version=$VERSION" -o hashman main.go
+RUN GOOS=$TARGETOS GOARCH=$TARGETARCH go build -ldflags="-s -w -X main.Version=$VERSION" -o hashman ./
 
 
 # Final Stage
