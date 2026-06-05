@@ -1,6 +1,6 @@
 # Go Hashman!
 
-> CLI to calculate multiple checksums at once.
+> CLI for concurrent checksum calculation.
 
 ![License](https://img.shields.io/github/license/idleberg/go-hashman?style=for-the-badge)
 ![Version](https://img.shields.io/github/v/release/idleberg/go-hashman?sort=semver&style=for-the-badge)
@@ -8,7 +8,7 @@
 
 Supports Adler-32, CRC32, CRC32C, CRC64, MD4, MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, and SHA3-512.
 
-The name is inspired by [Hashman Deejay](https://futuretimes.bandcamp.com/album/sandopolis), whose music I love listening to while creating things.
+The name is a nod to [Hashman Deejay](https://futuretimes.bandcamp.com/album/sandopolis), whose music I love listening to while creating things.
 
 ## Installation 💿
 
