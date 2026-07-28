@@ -18,6 +18,12 @@ The name is inspired by [Hashman Deejay](https://futuretimes.bandcamp.com/album/
 $ brew install idleberg/asahi/hashman
 ```
 
+### Winget
+
+```sh
+$ winget install idleberg.hashman
+```
+
 ### Go
 
 ```sh
